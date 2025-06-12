@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drop Menu</title>
+  <style>
+    .menu {
+      margin: 20px;
+    }
+    .item {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .submenu {
+      display: none;
+      margin-left: 20px;
+    }
+    .show {
+      display: block;
+    }
+    .message {
+      color: blue;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <div class="item" onclick="toggle(this)">Книги</div>
+    <div class="submenu" id="sub1">
+      <div class="item" onclick="toggle(this)">Отечественные</div>
+      <div class="submenu" id="sub2">
+        <div class="item" onclick="toggle(this)">Детективы</div>
+        <div class="submenu" id="sub3">
+          <div class="item" onclick="showMessage(this)">Научная фантастика</div>
+          <div class="item" onclick="showMessage(this)">Исторические</div>
+        </div>
+        <div class="item" onclick="showMessage(this)">Научная фантастика</div>
+        <div class="item" onclick="showMessage(this)">Исторические</div>
+      </div>
+      <div class="item" onclick="showMessage(this)">Звуковые</div>
+    </div>
+    <div class="item" onclick="toggle(this)">DVD</div>
+    <div class="submenu" id="sub4">
+      <div class="item" onclick="toggle(this)">Отечественные</div>
+      <div class="submenu" id="sub5">
+        <div class="item" onclick="showMessage(this)">Детективы</div>
+        <div class="item" onclick="showMessage(this)">Научная фантастика</div>
+        <div class="item" onclick="showMessage(this)">Исторические</div>
+      </div>
+      <div class="item" onclick="showMessage(this)">Звуковые</div>
+    </div>
+  </div>
+
+  <script>
+    function toggle(element) {
+      let sub = element.nextElementSibling;
+      if (sub && sub.classList.contains("submenu")) {
+        if (sub.classList.contains("show")) {
+          sub.classList.remove("show");
+        } else {
+          sub.classList.add("show");
+        }
+      }
+    }
+
+    function showMessage(element) {
+      let msg = document.createElement("div");
+      msg.className = "message";
+      msg.innerHTML = "Можешь пройти по ссылке!";
+      element.appendChild(msg);
+    }
+  </script>
+</body>
+</html>
